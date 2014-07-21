@@ -2,3 +2,6 @@ ULX-TTT-Corpses
 ===============
 
 A repository for my ULX commands that deal with TTT corpses.
+
+You can find it in bender's addon too.
+https://github.com/bender180/Trouble-in-Terrorist-Town-ULX-Commands
