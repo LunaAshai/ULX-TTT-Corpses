@@ -1,3 +1,5 @@
+local CATEGORY_NAME = "TTT Admin"
+
 function corpse_find( v ) -- Finds the corpse of a specified player.
         for _, ent in pairs( ents.FindByClass( "prop_ragdoll" ) ) do
 		if ent.uqid == v:UniqueID() and ent:IsValid() then
