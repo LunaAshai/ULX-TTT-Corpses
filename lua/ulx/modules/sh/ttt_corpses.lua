@@ -31,7 +31,7 @@ function ulx.identify( calling_ply, target_ply, unidentify )
 		
 		if target_ply:GetRole() == ROLE_TRAITOR then
 			SendConfirmedTraitors( GetInnocentFilter( false ) ) -- Update innocent's list of traitors.
-			SCORE:HandleBodyFound( calling_ply:Nick(), body )
+			SCORE:HandleBodyFound( calling_ply, target_ply )
 		end
 	else
 		ulx.fancyLogAdmin( calling_ply, "#A unidentified #T's body!", target_ply )
