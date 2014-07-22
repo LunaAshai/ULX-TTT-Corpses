@@ -17,6 +17,7 @@ function corpse_unidentify( corpse ) -- Unidentifies the specified corpse.
 	if corpse then
 		player.GetByUniqueID( corpse.uqid ):SetNWBool( "body_found", false ) -- Setting the scoreboard to be as if the body hasn't been found.
 		CORPSE.SetFound( corpse, false ) -- Setting the body to be unidentified.
+		SendFullStateUpdate()
 	end
 end
 
@@ -27,6 +28,11 @@ function ulx.identify( calling_ply, target_ply, unidentify )
 	if not unidentify then -- Check if ulx unidentify is being used instead.
 		ulx.fancyLogAdmin( calling_ply, "#A identified #T's body!", target_ply )
 		corpse_identify( body )
+		
+		if target_ply:GetRole() == ROLE_TRAITOR then
+			SendConfirmedTraitors( GetInnocentFilter( false ) ) -- Update innocent's list of traitors.
+		end
+		SCORE:HandleBodyFound( calling_ply:Nick(), body )
 	else
 		ulx.fancyLogAdmin( calling_ply, "#A unidentified #T's body!", target_ply )
 		corpse_unidentify( body )
